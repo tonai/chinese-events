@@ -1,0 +1,7 @@
+.input { 
+  width: 4em;
+}
+
+.table {
+  margin-top: var(--mantine-spacing-md);
+}
