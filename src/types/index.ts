@@ -3,6 +3,7 @@ import type { IGregorianDate } from "date-chinese";
 export type ITranslations = Record<string, string>;
 
 export interface ILanguage {
+  flag: string;
   label: string;
   translations?: () => Promise<{ default: ITranslations }>;
 }

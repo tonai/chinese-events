@@ -8,9 +8,10 @@ import { i18nContext } from "../../contexts/i18n";
 import { useStorage } from "../../hooks/useStorage";
 
 export const languages: ILanguages = {
-  "en-US": { label: "🇺🇸 English" },
+  "en-US": { flag: "🇺🇸", label: "English" },
   "fr-FR": {
-    label: "🇫🇷 Français",
+    flag: "🇫🇷",
+    label: "Français",
     translations: () => import("../../translations/fr-FR.json"),
   },
 };
