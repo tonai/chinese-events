@@ -16,17 +16,13 @@ export default defineConfig({
     react(),
     VitePWA({
       devOptions: {
-        enabled: true,
+        // enabled: true,
       },
-      injectManifest: {
-        globDirectory: "dist",
-        globPatterns: ["**/*.{html,js,css,json,png}"],
-        swDest: "dist/sw.js",
-        swSrc: "public/sw.js",
+      injectRegister: "auto",
+      registerType: "autoUpdate",
+      workbox: {
+        globPatterns: ["**/*.{js,css,html,ico,png,svg}"],
       },
-      injectRegister: false,
-      manifest: false,
-      strategies: "injectManifest",
     }),
   ],
 });
