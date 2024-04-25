@@ -1,8 +1,11 @@
-import { ReactNode, useCallback, useEffect, useMemo } from "react";
+import type { ILanguages, ITranslations } from "../../types";
+import type { IGregorianDate } from "date-chinese";
+import type { ReactElement, ReactNode } from "react";
+
+import { useCallback, useEffect, useMemo } from "react";
 
 import { i18nContext } from "../../contexts/i18n";
 import { useStorage } from "../../hooks/useStorage";
-import { IGregorianDate, ILanguages, ITranslations } from "../../types";
 
 export const languages: ILanguages = {
   "en-US": { label: "🇺🇸 English" },
@@ -16,7 +19,7 @@ interface II18nProviderProps {
   children: ReactNode;
 }
 
-export default function I18nProvider(props: II18nProviderProps) {
+export default function I18nProvider(props: II18nProviderProps): ReactElement {
   const { children } = props;
   const [language, setLanguage] = useStorage({
     defaultValue: "en-US",
@@ -29,34 +32,32 @@ export default function I18nProvider(props: II18nProviderProps) {
 
   const intl = useMemo(
     () => new Intl.DateTimeFormat(language, { dateStyle: "full" }),
-    [language]
+    [language],
   );
 
   const formatDate = useCallback(
     (gDate: IGregorianDate) => {
       return intl.format(new Date(gDate.year, gDate.month - 1, gDate.day));
     },
-    [intl]
+    [intl],
   );
 
   const translate = useCallback(
-    (text: string, substitutions: Record<string, string | number> = {}) => {
+    (text: string, substitutions: Record<string, number | string> = {}) => {
       let translation =
-        translations && text in translations
-          ? translations[text as keyof typeof translations]
-          : text;
+        translations && text in translations ? translations[text] : text;
       for (const [key, value] of Object.entries(substitutions)) {
         translation = translation.replaceAll(`$${key}`, String(value));
       }
       return translation;
     },
-    [translations]
+    [translations],
   );
 
   const loadTranslations = useCallback(
-    async (language: string) => {
+    async (language: string): Promise<void> => {
       if (language in languages) {
-        const { translations } = languages[language as keyof typeof languages];
+        const { translations } = languages[language];
         if (translations) {
           const result = await translations();
           return setTranslations(result.default);
@@ -64,15 +65,15 @@ export default function I18nProvider(props: II18nProviderProps) {
       }
       setTranslations({});
     },
-    [setTranslations]
+    [setTranslations],
   );
 
   const handleLanguageChange = useCallback(
-    async (language: string) => {
+    (language: string) => {
       setLanguage(language);
-      loadTranslations(language);
+      return loadTranslations(language);
     },
-    [loadTranslations, setLanguage]
+    [loadTranslations, setLanguage],
   );
 
   const context = useMemo(
@@ -80,14 +81,14 @@ export default function I18nProvider(props: II18nProviderProps) {
       formatDate,
       language,
       languages,
-      translate,
       setLanguage: handleLanguageChange,
+      translate,
     }),
-    [formatDate, handleLanguageChange, language, translate]
+    [formatDate, handleLanguageChange, language, translate],
   );
 
   useEffect(() => {
-    loadTranslations(language);
+    loadTranslations(language).catch(console.error);
     // eslint-disable-next-line react-hooks/exhaustive-deps
   }, []);
 

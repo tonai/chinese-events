@@ -1,5 +1,6 @@
+import type { II18nContext } from "../types";
+
 import { createContext } from "react";
-import { II18nContext } from "../types";
 
 export const i18nContext = createContext<II18nContext>({
   formatDate: () => "",

@@ -1,7 +1,9 @@
+import type { IChineseDate } from "date-chinese";
+import type { FormEvent, ReactElement } from "react";
+
 import { Button, Group, Menu, NumberInput, Table, Title } from "@mantine/core";
-// @ts-expect-error no types
 import { CalendarChinese } from "date-chinese";
-import { FormEvent, useMemo, useRef, useState } from "react";
+import { useMemo, useRef, useState } from "react";
 
 import { useI18n } from "../../hooks/useI18n";
 
@@ -11,7 +13,7 @@ const cal = new CalendarChinese();
 
 const now = new Date().getFullYear();
 
-export default function Events() {
+export default function Events(): ReactElement {
   const { formatDate, translate } = useI18n();
   const inputRef = useRef<HTMLInputElement>(null);
   const [year, setYear] = useState(now);
@@ -22,42 +24,42 @@ export default function Events() {
     return [cal.get(), cal.toGregorian()];
   }, [year]);
   const lanternFestival = useMemo(() => {
-    const cDate = chineseYear.slice();
+    const cDate = chineseYear.slice() as IChineseDate;
     cDate[2] = 1;
     cDate[4] = 15;
     cal.set(cDate);
     return cal.toGregorian();
   }, [chineseYear]);
   const dragonBoatFestival = useMemo(() => {
-    const cDate = chineseYear.slice();
+    const cDate = chineseYear.slice() as IChineseDate;
     cDate[2] = 5;
     cDate[4] = 5;
     cal.set(cDate);
     return cal.toGregorian();
   }, [chineseYear]);
   const qixiFestival = useMemo(() => {
-    const cDate = chineseYear.slice();
+    const cDate = chineseYear.slice() as IChineseDate;
     cDate[2] = 7;
     cDate[4] = 7;
     cal.set(cDate);
     return cal.toGregorian();
   }, [chineseYear]);
   const midAutumnFestival = useMemo(() => {
-    const cDate = chineseYear.slice();
+    const cDate = chineseYear.slice() as IChineseDate;
     cDate[2] = 8;
     cDate[4] = 15;
     cal.set(cDate);
     return cal.toGregorian();
   }, [chineseYear]);
   const chongyangFestival = useMemo(() => {
-    const cDate = chineseYear.slice();
+    const cDate = chineseYear.slice() as IChineseDate;
     cDate[2] = 9;
     cDate[4] = 9;
     cal.set(cDate);
     return cal.toGregorian();
   }, [chineseYear]);
 
-  function handleSubmit(e: FormEvent) {
+  function handleSubmit(e: FormEvent): void {
     e.preventDefault();
     setYear(Number(inputRef.current?.value));
   }
@@ -78,9 +80,9 @@ export default function Events() {
             <form onSubmit={handleSubmit}>
               <Group gap={4}>
                 <NumberInput
+                  ref={inputRef}
                   className={styles.input}
                   defaultValue={2024}
-                  ref={inputRef}
                   size="xs"
                 />
                 <Button size="xs" type="submit">

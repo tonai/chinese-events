@@ -1,18 +1,14 @@
 module.exports = {
   root: true,
-  env: { browser: true, es2020: true, node: true },
-  extends: [
-    'eslint:recommended',
-    'plugin:@typescript-eslint/recommended',
-    'plugin:react-hooks/recommended',
-  ],
-  ignorePatterns: ['dist', '.eslintrc.cjs'],
-  parser: '@typescript-eslint/parser',
-  plugins: ['react-refresh'],
-  rules: {
-    'react-refresh/only-export-components': [
-      'warn',
-      { allowConstantExport: true },
-    ],
+  extends: ["plugin:smile/react", "plugin:smile/ts"],
+  ignorePatterns: ["dist", ".eslintrc.cjs"],
+  parserOptions: {
+    project: ["./tsconfig.json", "./tsconfig.node.json"],
   },
-}
+  rules: {
+    "@typescript-eslint/no-confusing-void-expression": "off",
+    "consistent-return": "off",
+    "no-confusing-void-expression": "off",
+    "no-void": "off",
+  },
+};

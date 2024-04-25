@@ -1,8 +1,4 @@
-export interface IGregorianDate {
-  year: number;
-  month: number;
-  day: number;
-}
+import type { IGregorianDate } from "date-chinese";
 
 export type ITranslations = Record<string, string>;
 
@@ -20,6 +16,6 @@ export interface II18nContext {
   setLanguage: (language: string) => void;
   translate: (
     text: string,
-    substitutions?: Record<string, string | number>
+    substitutions?: Record<string, number | string>,
   ) => string;
 }
