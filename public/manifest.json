@@ -46,5 +46,10 @@
       "sizes": "420x413",
       "type": "image/png"
     }
-  ]
+  ],
+  "scope_extensions": [{ "origin": "tonai.github.io" }],
+  "edge_side_panel": {
+    "preferred_width": 420
+  },
+  "handle_links": "auto"
 }

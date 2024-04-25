@@ -31,12 +31,5 @@
   <body>
     <div id="root"></div>
     <script type="module" src="/src/main.tsx"></script>
-    <script>
-      if ("serviceWorker" in navigator) {
-        window.onload = () => {
-          navigator.serviceWorker.register("/chinese-events/sw.js");
-        };
-      }
-    </script>
   </body>
 </html>
