@@ -3,8 +3,8 @@ import type { ReactElement } from "react";
 import { AppShell, Group, Title } from "@mantine/core";
 import { useEffect, useRef, useState } from "react";
 
-import icon from "../../../public/icon.svg";
 import { useI18n } from "../../hooks/useI18n";
+import ColorScheme from "../ColorScheme";
 import Events from "../Events";
 import LanguagePicker from "../LanguagePicker";
 
@@ -22,11 +22,16 @@ function App(): ReactElement {
   return (
     <AppShell header={{ height: height as number }} padding="md">
       <AppShell.Header ref={headerRef} className={styles.header}>
-        <Group justify="space-between">
-          <img alt="Logo Chinese Events" className={styles.icon} src={icon} />
-          <Title order={1} size="h2">
+        <Group gap="xs" justify="space-between">
+          <img
+            alt="Logo Chinese Events"
+            className={styles.icon}
+            src="/chinese-events/icon.svg"
+          />
+          <Title className={styles.title} order={1} size="h2">
             {translate("Chinese Festivals")}
           </Title>
+          <ColorScheme />
           <LanguagePicker />
         </Group>
       </AppShell.Header>

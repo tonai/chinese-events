@@ -25,16 +25,16 @@ export default function LanguagePicker(): ReactElement {
         <Button
           onClick={() => combobox.toggleDropdown()}
           size="xs"
-          variant="subtle"
+          variant="default"
         >
-          {languages[language].label}
+          {languages[language].flag}
         </Button>
       </Combobox.Target>
       <Combobox.Dropdown className={styles.dropdown}>
         <Combobox.Options>
           {Object.entries(languages).map(([key, value]) => (
             <Combobox.Option key={key} value={key}>
-              {value.label}
+              {value.flag} {value.label}
             </Combobox.Option>
           ))}
         </Combobox.Options>

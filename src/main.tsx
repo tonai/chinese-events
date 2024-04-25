@@ -14,7 +14,7 @@ const root = document.getElementById("root");
 if (root) {
   createRoot(root).render(
     <StrictMode>
-      <MantineProvider theme={theme}>
+      <MantineProvider defaultColorScheme="auto" theme={theme}>
         <I18nProvider>
           <App />
         </I18nProvider>
