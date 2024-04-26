@@ -6,14 +6,23 @@
   "scripts": {
     "dev": "vite",
     "build": "tsc && vite build",
+    "build:capacitor": "tsc && BASE_URL=/ vite build",
     "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives && tsc --noEmit",
     "format": "prettier --write --ignore-unknown .",
     "preview": "vite preview",
     "prepare": "husky || true",
-    "bubblewrap:init": "bubblewrap init --manifest=https://tonai.github.io/chinese-events/manifest.json --directory=android",
-    "bubblewrap:build": "cd android && bubblewrap build"
+    "bubblewrap:init": "bubblewrap init --manifest=https://tonai.github.io/chinese-events/manifest.json --directory=bubblewrap",
+    "bubblewrap:build": "cd android && bubblewrap build",
+    "capacitor:icons": "capacitor-assets generate --assetPath '/dist/assets' --iconBackgroundColor '#ffffff' --iconBackgroundColorDark '#242424' --splashBackgroundColor '#ffffff' --splashBackgroundColorDark '#242424' --android",
+    "capacitor:init": "cap add android",
+    "capacitor:sync": "cap sync",
+    "capacitor:open": "cap open android",
+    "capacitor:run": "ANDROID_SDK_ROOT=/home/tocab/.bubblewrap/android_sdk cap run android",
+    "capacitor:build": "ANDROID_HOME=/home/tocab/.bubblewrap/android_sdk cap build android --androidreleasetype=APK"
   },
   "dependencies": {
+    "@capacitor/android": "^6.0.0",
+    "@capacitor/core": "^6.0.0",
     "@mantine/core": "^7.8.1",
     "@mantine/hooks": "^7.8.1",
     "date-chinese": "^2.1.4",
@@ -22,6 +31,8 @@
   },
   "devDependencies": {
     "@bubblewrap/cli": "^1.21.0",
+    "@capacitor/assets": "^3.0.5",
+    "@capacitor/cli": "^6.0.0",
     "@commitlint/cli": "^19.3.0",
     "@commitlint/config-conventional": "^19.2.2",
     "@types/react": "^18.2.66",

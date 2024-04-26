@@ -4,7 +4,7 @@ import { VitePWA } from "vite-plugin-pwa";
 
 // https://vitejs.dev/config/
 export default defineConfig({
-  base: "/chinese-events/",
+  base: process.env.BASE_URL ?? "/chinese-events/",
   build: {
     assetsDir: "code",
     cssMinify: true,
