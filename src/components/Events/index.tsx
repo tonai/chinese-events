@@ -82,7 +82,7 @@ export default function Events(): ReactElement {
                 <NumberInput
                   ref={inputRef}
                   className={styles.input}
-                  defaultValue={2024}
+                  defaultValue={year}
                   size="xs"
                 />
                 <Button size="xs" type="submit">
