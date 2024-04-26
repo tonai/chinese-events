@@ -26,7 +26,7 @@ function App(): ReactElement {
           <img
             alt="Logo Chinese Events"
             className={styles.icon}
-            src="/chinese-events/icon.svg"
+            src={`${import.meta.env.BASE_URL}icon.svg`}
           />
           <Title className={styles.title} order={1} size="h2">
             {translate("Chinese Festivals")}
