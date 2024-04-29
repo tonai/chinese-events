@@ -1,5 +1,6 @@
 {
   "compilerOptions": {
+    "composite": true,
     "target": "ESNext",
     "useDefineForClassFields": true,
     "lib": ["ESNext", "DOM", "DOM.Iterable"],
@@ -11,8 +12,9 @@
     "allowImportingTsExtensions": true,
     "resolveJsonModule": true,
     "isolatedModules": true,
-    "noEmit": true,
+    "emitDeclarationOnly": true,
     "jsx": "react-jsx",
+    "outDir": "dist",
 
     /* Linting */
     "strict": true,
@@ -20,10 +22,6 @@
     "noUnusedParameters": true,
     "noFallthroughCasesInSwitch": true
   },
-  "include": ["packages"],
-  "references": [
-    { "path": "./packages/shared" },
-    { "path": "./packages/pwa" },
-    { "path": "./packages/capacitor" }
-  ]
+  "include": ["src"],
+  "references": [{ "path": "./tsconfig.node.json" }]
 }
