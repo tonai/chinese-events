@@ -7,8 +7,10 @@
     "packages/*"
   ],
   "scripts": {
-    "build": "npm run build -w packages/pwa",
-    "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives && tsc --noEmit",
+    "build": "npm run build -w packages/shared",
+    "build:pwa": "npm run build && npm run build -w packages/pwa",
+    "prelint": "npm run build",
+    "lint": "eslint . --ext js,jsx,ts,tsx --report-unused-disable-directives --ignore-path .gitignore && tsc --noEmit",
     "format": "prettier --write --ignore-unknown .",
     "prepare": "husky || true"
   },
