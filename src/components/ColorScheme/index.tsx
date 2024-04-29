@@ -6,8 +6,8 @@ import {
   useMantineColorScheme,
 } from "@mantine/core";
 
-import moon from "../../assets/moon.svg";
-import sun from "../../assets/sun.svg";
+import Moon from "../../assets/moon.svg?react";
+import Sun from "../../assets/sun.svg?react";
 
 export default function ColorScheme(): ReactElement {
   const { setColorScheme } = useMantineColorScheme();
@@ -19,8 +19,8 @@ export default function ColorScheme(): ReactElement {
       onClick={() => setColorScheme(isDark ? "light" : "dark")}
       variant="default"
     >
-      {!isDark && <img alt="Switch to dark mode" src={moon} />}
-      {Boolean(isDark) && <img alt="Switch to light mode" src={sun} />}
+      {!isDark && <Moon />}
+      {Boolean(isDark) && <Sun />}
     </ActionIcon>
   );
 }
