@@ -1,0 +1,35 @@
+{
+  "name": "chinese-events-shared",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "exports": {
+    ".": {
+      "import": "./dist/chinese-events-shared.js",
+      "require": "./dist/chinese-events-shared.cjs",
+      "types": "./dist/src/index.d.ts"
+    },
+    "./style.css": "./dist/style.css"
+  },
+  "scripts": {
+    "build": "rm -rf ./dist && tsc && vite build"
+  },
+  "dependencies": {
+    "@mantine/core": "^7",
+    "@mantine/hooks": "^7",
+    "date-chinese": "^2",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@vitejs/plugin-react-swc": "^3",
+    "postcss": "^8",
+    "postcss-preset-mantine": "^1",
+    "postcss-simple-vars": "^7",
+    "typescript": "^5",
+    "vite": "^5",
+    "vite-plugin-svgr": "^4"
+  }
+}

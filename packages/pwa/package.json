@@ -1,0 +1,31 @@
+{
+  "name": "chinese-events-pwa",
+  "private": true,
+  "version": "0.0.0",
+  "type": "module",
+  "scripts": {
+    "dev": "vite",
+    "build": "tsc && vite build",
+    "preview": "vite preview",
+    "prepare": "husky || true",
+    "bubblewrap:init": "bubblewrap init --manifest=https://tonai.github.io/chinese-events/manifest.json --directory=android",
+    "bubblewrap:build": "cd android && bubblewrap build"
+  },
+  "dependencies": {
+    "@mantine/core": "^7",
+    "@mantine/hooks": "^7",
+    "chinese-events-shared": "0.0.0",
+    "date-chinese": "^2",
+    "react": "^18",
+    "react-dom": "^18"
+  },
+  "devDependencies": {
+    "@bubblewrap/cli": "^1",
+    "@types/react": "^18",
+    "@types/react-dom": "^18",
+    "@vitejs/plugin-react-swc": "^3",
+    "typescript": "^5",
+    "vite": "^5",
+    "vite-plugin-pwa": "^0"
+  }
+}

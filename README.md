@@ -8,14 +8,15 @@ https://tonai.github.io/chinese-events/
 
 Will download Java and Android SDK in `~/.bubblewrap`.
 
-Run:
+In the `packages/pwa` folder run:
 
 ```bash
+npm run build
 npm run bubblewrap:init # Init android project from deployed PWA
 npm run bubblewrap:build # Build APK
 ```
 
-APK is generated in `bubblewrap` directory.
+APK is generated in `android` directory.
 
 ### Capacitor
 
@@ -24,14 +25,13 @@ Prerequisites:
 - Android Studio with SDK : https://developer.android.com/studio?hl=fr
 - Java 17 : https://www.oracle.com/fr/java/technologies/downloads/
 
-Run:
+In the `packages/capacitor` folder run:
 
 ```bash
-npm run build:capacitor # Build local Vite project
-npm run capacitor:icons # Generate icons
+npm run build # Build local Vite project
 npm run capacitor:init # Create Android project
+npm run capacitor:icons # Generate icons
 npm run capacitor:sync # Copy Vite build in Android project
-npm run capacitor:run # Test on emulator or your phone
 npm run capacitor:open # Open project on Android Studio
 ```
 
@@ -67,6 +67,7 @@ cons:
 - limited to PWA capabilities
 - needs to deploy the app on the web
 - browser header bar (can be removed: https://dev.to/hyunsoong_i/twa-apps-how-to-hide-the-url-bar-browser-bar-and-display-app-as-full-screen-4cm3)
+- iOS support is experimental
 
 ### Capacitor
 

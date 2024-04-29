@@ -20,7 +20,7 @@ interface II18nProviderProps {
   children: ReactNode;
 }
 
-export default function I18nProvider(props: II18nProviderProps): ReactElement {
+export function I18nProvider(props: II18nProviderProps): ReactElement {
   const { children } = props;
   const [language, setLanguage] = useStorage({
     defaultValue: "en-US",

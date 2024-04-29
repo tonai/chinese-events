@@ -6,7 +6,7 @@ import { useI18n } from "../../hooks/useI18n";
 
 import styles from "./styles.module.css";
 
-export default function LanguagePicker(): ReactElement {
+export function LanguagePicker(): ReactElement {
   const { language, languages, setLanguage } = useI18n();
   const combobox = useCombobox();
 

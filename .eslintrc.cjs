@@ -7,7 +7,14 @@ module.exports = {
   },
   ignorePatterns: ["dist", ".eslintrc.cjs"],
   parserOptions: {
-    project: ["./tsconfig.json", "./tsconfig.node.json"],
+    project: [
+      "./packages/shared/tsconfig.json",
+      "./packages/shared/tsconfig.node.json",
+      "./packages/pwa/tsconfig.json",
+      "./packages/pwa/tsconfig.node.json",
+      "./packages/capacitor/tsconfig.json",
+      "./packages/capacitor/tsconfig.node.json",
+    ],
   },
   rules: {
     "@typescript-eslint/no-confusing-void-expression": "off",

@@ -9,7 +9,7 @@ import {
 import Moon from "../../assets/moon.svg?react";
 import Sun from "../../assets/sun.svg?react";
 
-export default function ColorScheme(): ReactElement {
+export function ColorScheme(): ReactElement {
   const { setColorScheme } = useMantineColorScheme();
   const colorScheme = useComputedColorScheme("light");
   const isDark = colorScheme === "dark";

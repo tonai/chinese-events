@@ -13,7 +13,7 @@ const cal = new CalendarChinese();
 
 const now = new Date().getFullYear();
 
-export default function Events(): ReactElement {
+export function Events(): ReactElement {
   const { formatDate, translate } = useI18n();
   const inputRef = useRef<HTMLInputElement>(null);
   const [year, setYear] = useState(now);
