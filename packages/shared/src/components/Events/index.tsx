@@ -1,9 +1,9 @@
 import type { IChineseDate } from "date-chinese";
-import type { FormEvent, ReactElement } from "react";
+import type { ChangeEvent, ReactElement } from "react";
 
-import { Button, Group, Menu, NumberInput, Table, Title } from "@mantine/core";
+import { Group, NativeSelect, Table, Title } from "@mantine/core";
 import { CalendarChinese } from "date-chinese";
-import { useMemo, useRef, useState } from "react";
+import { useMemo, useState } from "react";
 
 import { useI18n } from "../../hooks/useI18n";
 
@@ -12,10 +12,10 @@ import styles from "./styles.module.css";
 const cal = new CalendarChinese();
 
 const now = new Date().getFullYear();
+const years = new Array(11).fill(null).map((_, i) => String(now - 5 + i));
 
 export function Events(): ReactElement {
   const { formatDate, translate } = useI18n();
-  const inputRef = useRef<HTMLInputElement>(null);
   const [year, setYear] = useState(now);
 
   const [chineseYear, newYear] = useMemo(() => {
@@ -59,9 +59,8 @@ export function Events(): ReactElement {
     return cal.toGregorian();
   }, [chineseYear]);
 
-  function handleSubmit(e: FormEvent): void {
-    e.preventDefault();
-    setYear(Number(inputRef.current?.value));
+  function handleChange(event: ChangeEvent<HTMLSelectElement>): void {
+    setYear(Number(event.target.value));
   }
 
   return (
@@ -72,26 +71,7 @@ export function Events(): ReactElement {
             ? translate("This year events")
             : translate(`$year events`, { year })}
         </Title>
-        <Menu>
-          <Menu.Target>
-            <Button size="xs">{translate("Change")}</Button>
-          </Menu.Target>
-          <Menu.Dropdown>
-            <form onSubmit={handleSubmit}>
-              <Group gap={4}>
-                <NumberInput
-                  ref={inputRef}
-                  className={styles.input}
-                  defaultValue={year}
-                  size="xs"
-                />
-                <Button size="xs" type="submit">
-                  {translate("Update")}
-                </Button>
-              </Group>
-            </form>
-          </Menu.Dropdown>
-        </Menu>
+        <NativeSelect data={years} onChange={handleChange} value={year} />
       </Group>
       <Table className={styles.table}>
         <Table.Thead>
