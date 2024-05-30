@@ -61,6 +61,7 @@ pro:
 - easy to use
 - easy to configure (use manifest.json...etc.)
 - very lightweight : ~400ko APK / ~700ko installed
+- can be installed through the web app
 
 cons:
 
@@ -83,3 +84,19 @@ cons:
 - needs more setup (use `@capacitor/assets` for icons...etc.)
 - needs to configure the app with Android Studio
 - heavier: ~4.3Mo APK / ~10.7Mo installed
+
+### React-native
+
+pro:
+
+- full-screen app
+- access to more native feature (like the status bar...etc.)
+- access to native features with Expo
+- access to native sdk through the android project
+
+cons:
+
+- also needs Android Studio
+- needs some setup
+- use react-native and Expo components instead of web standards
+- a lot heavier: ~53.5Mo APK / ~64Mo installed
